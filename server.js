@@ -4,10 +4,10 @@ var Hapi = require('hapi')
 var server = new Hapi.Server()
 var config = require('./config')
 var searchService = require('./index')
-var validateAPI = require('./lib/validateAPI')
+var validateAPI = require('./lib/validate-api')
 
 server.connection({
-  port: config.SERVER_PORT_WEB
+  port: config.SERVER_PORT
 })
 
 server.register(require('hapi-auth-jwt2'), function (err) {

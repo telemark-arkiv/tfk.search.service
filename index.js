@@ -1,13 +1,9 @@
 'use strict'
 
-var routes = require('./routes')
-var feedback = require('./routes/feedback')
-var stats = require('./routes/stats')
+var api = require('./routes/api')
 
 exports.register = function (server, options, next) {
-  server.route(routes)
-  server.route(feedback)
-  server.route(stats)
+  server.route(api)
   next()
 }
 
