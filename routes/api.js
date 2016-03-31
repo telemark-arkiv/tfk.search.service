@@ -20,6 +20,22 @@ var routes = [
       description: 'Search the data',
       auth: false
     }
+  },
+  {
+    method: 'POST',
+    path: '/api',
+    config: {
+      handler: api.addIndex,
+      description: 'Add an index'
+    }
+  },
+  {
+    method: 'POST',
+    path: '/api/{index}/{type}',
+    config: {
+      handler: api.addIndex,
+      description: 'Add an index'
+    }
   }
 ]
 
