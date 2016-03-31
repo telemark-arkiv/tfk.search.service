@@ -27,7 +27,6 @@ RUN npm install --production
 # Env variables
 ENV SERVER_PORT 3000
 ENV JWT_SECRET "Louie Louie, oh no, I got to go"
-ENV COOKIE_SECRET "Louie Louie, oh no, I got to go"
 ENV ELASTIC_URL "http://elasticserver"
 ENV ELASTIC_PORT 9200
 
