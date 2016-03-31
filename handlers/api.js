@@ -23,6 +23,24 @@ function doSearch (request, reply) {
   })
 }
 
+function addIndex (request, reply) {
+  var body = request.payload
+  var index = {}
+
+  if (request.params.index && request.params.type) {
+    index.index = request.params.index
+    index.type = request.params.type,
+    index.body = body
+  } else {
+    index = body
+  }
+  client.create(index, function (error, body) {
+    reply(error || body)
+  })
+}
+
 module.exports.getFrontpage = getFrontpage
 
 module.exports.doSearch = doSearch
+
+module.exports.addIndex = addIndex
