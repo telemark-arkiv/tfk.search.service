@@ -25,16 +25,25 @@ var routes = [
     method: 'POST',
     path: '/api',
     config: {
-      handler: api.addIndex,
-      description: 'Add an index'
+      handler: api.addDocument,
+      description: 'Add a document'
     }
   },
   {
     method: 'POST',
     path: '/api/{index}/{type}',
     config: {
-      handler: api.addIndex,
-      description: 'Add an index'
+      handler: api.addDocument,
+      description: 'Add a document'
+    }
+  },
+  {
+    method: 'DELETE',
+    path: '/api/{index}',
+    config: {
+      handler: api.deleteIndex,
+      description: 'Delete an index',
+      auth: false
     }
   }
 ]

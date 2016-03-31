@@ -23,18 +23,27 @@ function doSearch (request, reply) {
   })
 }
 
-function addIndex (request, reply) {
+function addDocument (request, reply) {
   var body = request.payload
-  var index = {}
+  var doc = {}
 
   if (request.params.index && request.params.type) {
-    index.index = request.params.index
-    index.type = request.params.type,
-    index.body = body
+    doc.index = request.params.index
+    doc.type = request.params.type,
+    doc.body = body
   } else {
-    index = body
+    doc = body
   }
-  client.create(index, function (error, body) {
+  client.create(doc, function (error, body) {
+    reply(error || body)
+  })
+}
+
+function deleteIndex (request, reply) {
+  var index = request.params.index
+  client.indices.delete({
+    index: index
+  }, function (error, body) {
     reply(error || body)
   })
 }
@@ -43,4 +52,6 @@ module.exports.getFrontpage = getFrontpage
 
 module.exports.doSearch = doSearch
 
-module.exports.addIndex = addIndex
+module.exports.addDocument = addDocument
+
+module.exports.deleteIndex = deleteIndex
