@@ -17,7 +17,7 @@ function getFrontpage (request, reply) {
 
 function doSearch (request, reply) {
   client.search({
-    q: request.query.query
+    q: request.params.query || request.query.query
   }, function (error, body) {
     reply(error || body)
   })
