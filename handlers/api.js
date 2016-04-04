@@ -29,7 +29,7 @@ function addDocument (request, reply) {
 
   if (request.params.index && request.params.type) {
     doc.index = request.params.index
-    doc.type = request.params.type,
+    doc.type = request.params.type
     doc.body = body
   } else {
     doc = body
