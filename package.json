@@ -41,7 +41,7 @@
   "dependencies": {
     "elasticsearch": "11.0.0",
     "hapi": "13.3.0",
-    "hapi-auth-jwt2": "5.7.0",
+    "hapi-auth-jwt2": "5.8.0",
     "jsonwebtoken": "5.7.0"
   }
 }
