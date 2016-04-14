@@ -5,16 +5,16 @@ var api = require('../handlers/api')
 var routes = [
   {
     method: 'GET',
-    path: '/',
+    path: '/api/ping',
     config: {
-      handler: api.getFrontpage,
-      description: 'Show the frontpage',
+      handler: api.doPing,
+      description: 'Ping the server',
       auth: false
     }
   },
   {
     method: 'GET',
-    path: '/search',
+    path: '/api/search',
     config: {
       handler: api.doSearch,
       description: 'Search the data',
@@ -23,7 +23,7 @@ var routes = [
   },
   {
     method: 'GET',
-    path: '/search/{query}',
+    path: '/api/search/{query}',
     config: {
       handler: api.doSearch,
       description: 'Search the data',

@@ -1,0 +1,9 @@
+<h1>Søket genererte {{total}} treff</h1>
+
+{{#each results}}
+    <div>
+        <h2>{{_source.title}}</h2>
+        <p>{{_source.description}}</p>
+        <a href="{{_source.url}}" target="_blank">Les mer</a>
+    </div>
+{{/each}}

@@ -7,17 +7,11 @@ var client = new elasticsearch.Client({
   log: 'error'
 })
 
-function getFrontpage (request, reply) {
-  client.ping({
-    q: 'wunderbar'
-  }, function (error, body) {
-    reply(error || body)
-  })
-}
-
 function doSearch (request, reply) {
   client.search({
-    q: request.params.query || request.query.query
+    q: request.params.query || request.query.query,
+    size: request.query.size || 20,
+    from: request.query.from || 0
   }, function (error, body) {
     reply(error || body)
   })
@@ -48,10 +42,18 @@ function deleteIndex (request, reply) {
   })
 }
 
-module.exports.getFrontpage = getFrontpage
+function doPing (request, reply) {
+  client.ping({
+    q: 'wunderbar'
+  }, function (error, body) {
+    reply(error || 'pong')
+  })
+}
 
 module.exports.doSearch = doSearch
 
 module.exports.addDocument = addDocument
 
 module.exports.deleteIndex = deleteIndex
+
+module.exports.doPing = doPing

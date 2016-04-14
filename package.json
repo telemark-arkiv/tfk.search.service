@@ -1,6 +1,6 @@
 {
   "name": "tfk.search.service",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Public enterprise search for tfk",
   "license": "MIT",
   "author": {
@@ -40,8 +40,11 @@
   },
   "dependencies": {
     "elasticsearch": "11.0.1",
+    "handlebars": "4.0.5",
     "hapi": "13.3.0",
     "hapi-auth-jwt2": "5.8.0",
-    "jsonwebtoken": "5.7.0"
+    "hoek": "3.0.4",
+    "jsonwebtoken": "5.7.0",
+    "vision": "4.1.0"
   }
 }
