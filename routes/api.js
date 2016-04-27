@@ -23,7 +23,25 @@ var routes = [
   },
   {
     method: 'GET',
+    path: '/api/{index}/search',
+    config: {
+      handler: api.doSearch,
+      description: 'Search the data',
+      auth: false
+    }
+  },
+  {
+    method: 'GET',
     path: '/api/search/{query}',
+    config: {
+      handler: api.doSearch,
+      description: 'Search the data',
+      auth: false
+    }
+  },
+  {
+    method: 'GET',
+    path: '/api/{index}/search/{query}',
     config: {
       handler: api.doSearch,
       description: 'Search the data',

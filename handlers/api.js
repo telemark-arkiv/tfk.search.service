@@ -11,7 +11,8 @@ function doSearch (request, reply) {
   client.search({
     q: request.params.query || request.query.query,
     size: request.query.size || 20,
-    from: request.query.from || 0
+    from: request.query.from || 0,
+    index: request.params.index || ''
   }, function (error, body) {
     reply(error || body)
   })
