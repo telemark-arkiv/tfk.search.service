@@ -42,7 +42,7 @@
     "elasticsearch": "11.0.1",
     "handlebars": "4.0.5",
     "hapi": "13.3.0",
-    "hapi-auth-jwt2": "5.8.0",
+    "hapi-auth-jwt2": "6.0.0",
     "hoek": "4.0.0",
     "jsonwebtoken": "6.2.0",
     "vision": "4.1.0"
