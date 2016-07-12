@@ -44,7 +44,7 @@
     "hapi": "13.5.0",
     "hapi-auth-jwt2": "7.0.1",
     "hoek": "4.0.1",
-    "jsonwebtoken": "7.0.1",
+    "jsonwebtoken": "7.1.0",
     "vision": "4.1.0"
   }
 }
