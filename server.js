@@ -1,32 +1,40 @@
 'use strict'
 
-var Hapi = require('hapi')
-var Hoek = require('hoek')
-var server = new Hapi.Server()
-var config = require('./config')
-var searchService = require('./index')
-var validateAPI = require('./lib/validate-api')
+const Hapi = require('hapi')
+const hapiAuthJwt2 = require('hapi-auth-jwt2')
+const vision = require('vision')
+const server = new Hapi.Server()
+const config = require('./config')
+const searchService = require('./index')
+const validateAPI = require('./lib/validate-api')
+
+function endIfError (error) {
+  if (error) {
+    console.error(error)
+    process.exit(1)
+  }
+}
+
+const plugins = [
+  {register: hapiAuthJwt2},
+  {register: vision},
+  {register: searchService}
+]
 
 server.connection({
   port: config.SERVER_PORT
 })
 
-server.register(require('hapi-auth-jwt2'), function (err) {
-  if (err) {
-    console.log(err)
-  }
+server.register(plugins, (error) => {
+  endIfError(error)
 
-  server.auth.strategy('jwt', 'jwt',
-    { key: config.JWT_SECRET,          // Never Share your secret key
-      validateFunc: validateAPI,            // validate function defined above
-      verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
-    })
+  server.auth.strategy('jwt', 'jwt', {
+    key: config.JWT_SECRET,          // Never Share your secret key
+    validateFunc: validateAPI,            // validate function defined above
+    verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
+  })
 
   server.auth.default('jwt')
-})
-
-server.register(require('vision'), function (err) {
-  Hoek.assert(!err, err)
 
   server.views({
     engines: {
@@ -40,31 +48,17 @@ server.register(require('vision'), function (err) {
     layout: true,
     compileMode: 'sync'
   })
+
 })
 
-server.register([
-  {
-    register: searchService,
-    options: {}
-  }
-], function (err) {
-  if (err) {
-    console.error('Failed to load a plugin:', err)
-  }
-})
-
-function startServer () {
-  server.start(function () {
+module.exports.start = () => {
+  server.start(() => {
     console.log('Server running at:', server.info.uri)
   })
 }
 
-function stopServer () {
-  server.stop(function () {
+module.exports.stop = () => {
+  server.stop(() => {
     console.log('Server stopped')
   })
 }
-
-module.exports.start = startServer
-
-module.exports.stop = stopServer
