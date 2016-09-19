@@ -18,6 +18,7 @@
     "coverage": "tap test/*.js --coverage",
     "coveralls": "tap --cov --coverage-report=lcov test/*.js && cat coverage/lcov.info | coveralls",
     "setup": "npm install && node setup.js",
+    "standard-fix": "standard --fix",
     "generate-test-token": "node utils/generate-test-token.js"
   },
   "keywords": [

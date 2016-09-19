@@ -48,7 +48,6 @@ server.register(plugins, (error) => {
     layout: true,
     compileMode: 'sync'
   })
-
 })
 
 module.exports.start = () => {
