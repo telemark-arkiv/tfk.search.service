@@ -1,16 +1,12 @@
 'use strict'
 
-var jwt = require('jsonwebtoken')
-var config = require('../config')
-var tokenOptions = {
-  expiresIn: '1h',
-  issuer: 'https://auth.t-fk.no'
-}
-var data = {
+const generateToken = require('tfk-generate-jwt')
+const config = require('../config')
+const data = {
   cn: 'Bernhard Riemann',
   userId: 'riemann'
 }
 
-var token = jwt.sign(data, config.JWT_SECRET, tokenOptions)
+const token = generateToken({payload: data, key:config.JWT_SECRET})
 
 console.log(token)
