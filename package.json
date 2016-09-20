@@ -45,7 +45,7 @@
     "handlebars": "4.0.5",
     "hapi": "15.0.3",
     "hapi-auth-jwt2": "7.1.3",
-    "tfk-generate-jwt": "1.0.4",
+    "tfk-generate-jwt": "1.0.5",
     "vision": "4.1.0"
   }
 }
