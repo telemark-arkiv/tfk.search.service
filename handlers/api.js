@@ -1,13 +1,13 @@
 'use strict'
 
-var elasticsearch = require('elasticsearch')
-var config = require('../config')
-var client = new elasticsearch.Client({
+const elasticsearch = require('elasticsearch')
+const config = require('../config')
+const client = new elasticsearch.Client({
   host: config.ELASTIC_URL + ':' + config.ELASTIC_PORT,
   log: 'error'
 })
 
-function doSearch (request, reply) {
+module.export.doSearch = (request, reply) => {
   client.search({
     q: request.params.query || request.query.query,
     size: request.query.size || 20,
@@ -18,7 +18,7 @@ function doSearch (request, reply) {
   })
 }
 
-function addDocument (request, reply) {
+mdoule.exports.addDocument = (request, reply) => {
   var body = request.payload
   var doc = {}
 
@@ -34,7 +34,7 @@ function addDocument (request, reply) {
   })
 }
 
-function deleteIndex (request, reply) {
+module.exports.deleteIndex = (request, reply) => {
   var index = request.params.index
   client.indices.delete({
     index: index
@@ -43,18 +43,10 @@ function deleteIndex (request, reply) {
   })
 }
 
-function doPing (request, reply) {
+module.exports.doPing = (request, reply) => {
   client.ping({
     q: 'wunderbar'
   }, function (error, body) {
     reply(error || 'pong')
   })
 }
-
-module.exports.doSearch = doSearch
-
-module.exports.addDocument = addDocument
-
-module.exports.deleteIndex = deleteIndex
-
-module.exports.doPing = doPing
