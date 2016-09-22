@@ -1,14 +1,14 @@
 'use strict'
 
-var elasticsearch = require('elasticsearch')
-var config = require('../config')
-var client = new elasticsearch.Client({
+const elasticsearch = require('elasticsearch')
+const config = require('../config')
+const client = new elasticsearch.Client({
   host: config.ELASTIC_URL + ':' + config.ELASTIC_PORT,
   log: 'error'
 })
 
-function getFrontpage (request, reply) {
-  var viewOptions = {
+module.exports.getFrontpage = (request, reply) => {
+  const viewOptions = {
     query: '',
     total: 0,
     results: []
@@ -16,8 +16,8 @@ function getFrontpage (request, reply) {
   reply.view('index', viewOptions)
 }
 
-function doSearch (request, reply) {
-  var query = request.params.query || request.query.query
+module.exports.doSearch = (request, reply) => {
+  const query = request.params.query || request.query.query
   client.search({
     q: query,
     size: request.query.size || 20,
@@ -35,7 +35,3 @@ function doSearch (request, reply) {
     }
   })
 }
-
-module.exports.getFrontpage = getFrontpage
-
-module.exports.doSearch = doSearch
