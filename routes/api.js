@@ -1,8 +1,8 @@
 'use strict'
 
-var api = require('../handlers/api')
+const api = require('../handlers/api')
 
-var routes = [
+module.exports = [
   {
     method: 'GET',
     path: '/api/ping',
@@ -69,10 +69,7 @@ var routes = [
     path: '/api/{index}',
     config: {
       handler: api.deleteIndex,
-      description: 'Delete an index',
-      auth: false
+      description: 'Delete an index'
     }
   }
 ]
-
-module.exports = routes

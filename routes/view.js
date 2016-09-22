@@ -1,8 +1,8 @@
 'use strict'
 
-var view = require('../handlers/view')
+const view = require('../handlers/view')
 
-var routes = [
+module.exports = [
   {
     method: 'GET',
     path: '/',
@@ -22,5 +22,3 @@ var routes = [
     }
   }
 ]
-
-module.exports = routes
