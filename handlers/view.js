@@ -17,7 +17,8 @@ module.exports.getFrontpage = (request, reply) => {
 }
 
 module.exports.doSearch = (request, reply) => {
-  const query = request.params.query || request.query.query
+  const params = request.params
+  const query = params ? request.params.query : request.query.query
   client.search({
     q: query,
     size: request.query.size || 20,
