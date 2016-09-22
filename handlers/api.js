@@ -7,7 +7,7 @@ const client = new elasticsearch.Client({
   log: 'error'
 })
 
-module.export.doSearch = (request, reply) => {
+module.exports.doSearch = (request, reply) => {
   client.search({
     q: request.params.query || request.query.query,
     size: request.query.size || 20,
@@ -18,7 +18,7 @@ module.export.doSearch = (request, reply) => {
   })
 }
 
-mdoule.exports.addDocument = (request, reply) => {
+module.exports.addDocument = (request, reply) => {
   var body = request.payload
   var doc = {}
 
