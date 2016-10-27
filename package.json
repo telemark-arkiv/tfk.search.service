@@ -41,7 +41,7 @@
     "tap": "8.0.0"
   },
   "dependencies": {
-    "elasticsearch": "11.0.1",
+    "elasticsearch": "12.0.0",
     "handlebars": "4.0.5",
     "hapi": "15.2.0",
     "hapi-auth-jwt2": "7.1.3",
