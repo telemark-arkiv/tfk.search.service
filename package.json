@@ -44,7 +44,7 @@
     "elasticsearch": "12.1.0",
     "handlebars": "4.0.6",
     "hapi": "15.2.0",
-    "hapi-auth-jwt2": "7.2.0",
+    "hapi-auth-jwt2": "7.2.2",
     "tfk-generate-jwt": "1.0.7",
     "vision": "4.1.0"
   }
