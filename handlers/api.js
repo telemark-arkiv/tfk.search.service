@@ -1,5 +1,6 @@
 'use strict'
 
+const uuid = require('uuid')
 const elasticsearch = require('elasticsearch')
 const config = require('../config')
 const client = new elasticsearch.Client({
@@ -25,11 +26,16 @@ module.exports.addDocument = (request, reply) => {
   if (request.params.index && request.params.type) {
     doc.index = request.params.index
     doc.type = request.params.type
+    doc.id = uuid()
     doc.body = body
   } else {
     doc = body
   }
+
   client.create(doc, function (error, body) {
+    if (error) {
+      console.log(error)
+    }
     reply(error || body)
   })
 }
