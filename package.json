@@ -43,7 +43,7 @@
   "dependencies": {
     "elasticsearch": "12.1.2",
     "handlebars": "4.0.6",
-    "hapi": "16.0.3",
+    "hapi": "16.1.0",
     "hapi-auth-jwt2": "7.2.4",
     "tfk-generate-jwt": "1.0.9",
     "uuid": "3.0.1",
