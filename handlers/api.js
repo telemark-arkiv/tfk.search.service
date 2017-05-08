@@ -4,7 +4,7 @@ const uuid = require('uuid')
 const elasticsearch = require('elasticsearch')
 const config = require('../config')
 const client = new elasticsearch.Client({
-  host: config.ELASTIC_URL + ':' + config.ELASTIC_PORT,
+  host: config.ELASTIC_URL,
   log: 'error'
 })
 
@@ -20,8 +20,8 @@ module.exports.doSearch = (request, reply) => {
 }
 
 module.exports.addDocument = (request, reply) => {
-  var body = request.payload
-  var doc = {}
+  const body = request.payload
+  let doc = {}
 
   if (request.params.index && request.params.type) {
     doc.index = request.params.index
@@ -32,7 +32,7 @@ module.exports.addDocument = (request, reply) => {
     doc = body
   }
 
-  client.create(doc, function (error, body) {
+  client.create(doc, (error, body) => {
     if (error) {
       console.log(error)
     }
@@ -41,10 +41,10 @@ module.exports.addDocument = (request, reply) => {
 }
 
 module.exports.deleteIndex = (request, reply) => {
-  var index = request.params.index
+  const index = request.params.index
   client.indices.delete({
     index: index
-  }, function (error, body) {
+  }, (error, body) => {
     reply(error || body)
   })
 }
@@ -52,7 +52,7 @@ module.exports.deleteIndex = (request, reply) => {
 module.exports.doPing = (request, reply) => {
   client.ping({
     q: 'wunderbar'
-  }, function (error, body) {
+  }, (error, body) => {
     reply(error || 'pong')
   })
 }

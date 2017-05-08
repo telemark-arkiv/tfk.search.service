@@ -3,7 +3,7 @@
 const elasticsearch = require('elasticsearch')
 const config = require('../config')
 const client = new elasticsearch.Client({
-  host: config.ELASTIC_URL + ':' + config.ELASTIC_PORT,
+  host: config.ELASTIC_URL,
   log: 'error'
 })
 
@@ -23,11 +23,11 @@ module.exports.doSearch = (request, reply) => {
     q: query,
     size: request.query.size || 20,
     from: request.query.from || 0
-  }, function (error, data) {
+  }, (error, data) => {
     if (error) {
       reply(error)
     } else {
-      var viewOptions = {
+      const viewOptions = {
         query: query,
         total: data.hits.total,
         results: data.hits.hits || []

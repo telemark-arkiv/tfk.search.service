@@ -1,9 +1,9 @@
 'use strict'
 
-var api = require('./routes/api')
-var view = require('./routes/view')
+const api = require('./routes/api')
+const view = require('./routes/view')
 
-exports.register = function (server, options, next) {
+exports.register = (server, options, next) => {
   server.route(view)
   server.route(api)
   next()

@@ -1,11 +1,5 @@
-###########################################################
-#
-# Dockerfile for tfk.search.service
-#
-###########################################################
-
-# Setting the base to nodejs 4.6.2
-FROM mhart/alpine-node:4.6.2
+# Setting the base to nodejs 7.10.0
+FROM node:7.10.0-alpine
 
 # Maintainer
 MAINTAINER Geir Gåsodden
@@ -23,12 +17,6 @@ WORKDIR "/src"
 
 # Install dependencies
 RUN npm install --production
-
-# Env variables
-ENV SERVER_PORT 3000
-ENV JWT_SECRET "Louie Louie, oh no, I got to go"
-ENV ELASTIC_URL "http://elasticserver"
-ENV ELASTIC_PORT 9200
 
 # Expose 3000
 EXPOSE 3000
