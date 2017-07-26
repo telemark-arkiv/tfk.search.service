@@ -37,7 +37,7 @@
   "homepage": "https://github.com/telemark/tfk.search.service",
   "devDependencies": {
     "coveralls": "2.13.1",
-    "nsp": "2.6.3",
+    "nsp": "2.7.0",
     "standard": "10.0.2",
     "tap": "10.3.3"
   },
