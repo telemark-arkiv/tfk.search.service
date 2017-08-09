@@ -42,7 +42,7 @@
     "tap": "10.5.0"
   },
   "dependencies": {
-    "elasticsearch": "13.1.1",
+    "elasticsearch": "13.3.0",
     "handlebars": "4.0.9",
     "hapi": "16.5.1",
     "hapi-auth-jwt2": "7.3.0",
