@@ -29,8 +29,8 @@ server.register(plugins, (error) => {
   endIfError(error)
 
   server.auth.strategy('jwt', 'jwt', {
-    key: config.JWT_SECRET,          // Never Share your secret key
-    validateFunc: validateAPI,            // validate function defined above
+    key: config.JWT_SECRET, // Never Share your secret key
+    validateFunc: validateAPI, // validate function defined above
     verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
   })
 

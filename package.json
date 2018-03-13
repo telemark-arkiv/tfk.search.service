@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=8.8.0"
+    "node": ">=8.10.0"
   },
   "scripts": {
     "start": "node standalone.js",
@@ -19,7 +19,8 @@
     "coverage": "tap test/**/*.js --coverage",
     "coveralls": "tap --cov --coverage-report=lcov test/**/*.js && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
-    "generate-test-token": "node utils/generate-test-token.js"
+    "generate-test-token": "node utils/generate-test-token.js",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
   },
   "keywords": [
     "Louie",
@@ -34,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/telemark/tfk.search.service/issues"
   },
-  "homepage": "https://github.com/telemark/tfk.search.service",
+  "homepage": "https://github.com/telemark/tfk.search.service#readme",
   "devDependencies": {
     "coveralls": "3.0.0",
     "nsp": "3.2.1",
@@ -44,10 +45,10 @@
   "dependencies": {
     "elasticsearch": "14.2.0",
     "handlebars": "4.0.11",
-    "hapi": "17.1.1",
+    "hapi": "16.6.2",
     "hapi-auth-jwt2": "7.4.1",
     "tfk-generate-jwt": "2.0.0",
-    "uuid": "3.2.0",
+    "uuid": "3.2.1",
     "vision": "4.1.1"
   }
 }
